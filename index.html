@@ -1,7 +1,193 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michael Fahim - Interactive Resume</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 50px 0;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+        }
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            border: 5px solid #ecf0f1;
+        }
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .section {
+            margin-bottom: 30px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .section h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .experience-item {
+            margin-bottom: 20px;
+        }
+        .experience-item h3 {
+            color: #2980b9;
+        }
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .skill-item {
+            background-color: #3498db;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <header>
+        <div class="profile-image">
+            <img src="/api/placeholder/200/200" alt="Michael Fahim">
+        </div>
+        <h1>Michael Fahim</h1>
+        <p>Major Incident Manager / Escalation Incident Manager</p>
+    </header>
+    <div class="container">
+        <section id="profile" class="section">
+            <h2>Professional Profile</h2>
+            <p>Diligent and results-driven Incident Manager with over 7 years of experience in leading and optimizing incident response processes. Adept at swiftly analyzing complex situations, coordinating cross-functional teams, and ensuring timely resolution of critical incidents.</p>
+        </section>
+        <section id="experience" class="section">
+            <h2>Work Experience</h2>
+            <div class="experience-item">
+                <h3>Major Incident Manager - Yahoo Inc</h3>
+                <p>June 2023 – June 2024</p>
+                <ul>
+                    <li>Led cross-functional teams in resolving major incidents and minimizing service downtime.</li>
+                    <li>Implemented and refined incident response processes to enhance efficiency and effectiveness.</li>
+                    <li>Facilitated post-incident reviews to extract valuable insights and drive continuous improvement.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <h3>Service Desk Lead / Major Incident Manager - HCL America Inc</h3>
+                <p>Nov 2018 – Current</p>
+                <ul>
+                    <li>Guided a dynamic team of 27+ L1 and L1.5 support experts for SIC.</li>
+                    <li>Orchestrated resolution for major incidents and outages, ensuring operational continuity.</li>
+                    <li>Implemented performance monitoring for agents and spearheaded Quality Assurance efforts.</li>
+                </ul>
+            </div>
+        </section>
+        <section id="education" class="section">
+            <h2>Education</h2>
+            <ul>
+                <li>Bachelor's Degree in Computer Science - University of The People (Aug 2023)</li>
+                <li>Associate Degree in Computer Engineering - Wake Tech (July 2018)</li>
+                <li>Web Development, Android Development, IOS Development - Udemy Classes</li>
+            </ul>
+        </section>
+        <section id="skills" class="section">
+            <h2>Skills</h2>
+            <div class="skills-list">
+                <span class="skill-item">Incident Management</span>
+                <span class="skill-item">ITIL Practices</span>
+                <span class="skill-item">Team Leadership</span>
+                <span class="skill-item">Problem Solving</span>
+                <span class="skill-item">Communication</span>
+                <span class="skill-item">Technical Support</span>
+            </div>
+        </section>
+    </div>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.utils.toArray(".section").forEach(section => {
+            gsap.fromTo(section, {
+                opacity: 0,
+                y: 50
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                    end: "bottom 20%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+        });
+
+        gsap.from("header", {
+            opacity: 0,
+            y: -50,
+            duration: 1,
+            ease: "power2.out"
+        });
+
+        gsap.from(".profile-image", {
+            scale: 0,
+            opacity: 0,
+            duration: 1,
+            delay: 0.5,
+            ease: "back.out(1.7)"
+        });
+
+        gsap.from(".skill-item", {
+            scale: 0,
+            opacity: 0,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: "back.out(1.7)",
+            scrollTrigger: {
+                trigger: "#skills",
+                start: "top 80%",
+                end: "bottom 20%",
+                toggleActions: "play none none reverse"
+            }
+        });
+    </script>
 </body>
 </html>
