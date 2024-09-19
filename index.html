@@ -1,253 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Michael Fahim - Interactive Resume</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            overflow-x: hidden;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        header {
-            text-align: center;
-            padding: 50px 0;
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            position: relative;
-        }
-        header:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.3));
-            z-index: 1;
-        }
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            overflow: hidden;
-            border: 5px solid #ecf0f1;
-            position: relative;
-            z-index: 2;
-        }
-        .profile-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        h1 {
-            margin: 0;
-            font-size: 2.5em;
-            z-index: 2;
-            position: relative;
-        }
-        .contact-info {
-            margin-top: 10px;
-            z-index: 2;
-            position: relative;
-        }
-        .section {
-            margin-bottom: 30px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        .section h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            position: relative;
-        }
-        .experience-item, .skills-list, .attributes-list {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .experience-item:hover, .skills-list:hover, .attributes-list:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        .skills-list, .attributes-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .skill-item, .attribute-item {
-            background-color: #3498db;
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            transition: background-color 0.3s;
-        }
-        .skill-item:hover, .attribute-item:hover {
-            background-color: #2980b9;
-        }
-        .contact-info p {
-            font-size: 1.1em;
-            font-weight: bold;
-            color: #3498db;
-        }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .progress-bar {
-            width: 100%;
-            background-color: #f3f3f3;
-            border-radius: 20px;
-            overflow: hidden;
-            margin: 10px 0;
-        }
-        .progress-fill {
-            background-color: #3498db;
-            height: 8px;
-            width: 0;
-            border-radius: 20px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Michael Fahim's Resume</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="profile-image">
-            <img src="/api/placeholder/200/200" alt="Michael Fahim">
-        </div>
-        <h1>Michael Fahim</h1>
-        <p>Major Incident Manager / Escalation Incident Manager</p>
-        <div class="contact-info">
-            <p>919-559-1880 | Michael_Fahim@yahoo.com</p>
-        </div>
-    </header>
-    <div class="container">
-        <section id="profile" class="section">
-            <h2>Professional Profile</h2>
-            <p>Diligent and results-driven Incident Manager...</p>
-        </section>
-        <section id="experience" class="section">
-            <h2>Work Experience</h2>
-            <!-- Add progress bars -->
-            <div class="experience-item">
-                <h3>Major Incident Manager - Yahoo Inc</h3>
-                <p>June 2023 – June 2024 (contract is over)</p>
-                <ul>
-                    <li>Led cross-functional teams in resolving major incidents...</li>
-                    <!-- Add more list items here -->
-                </ul>
-            </div>
-            <div class="experience-item">
-                <h3>Service Desk Lead / Major Incident Manager - HCL America Inc</h3>
-                <p>Nov 2018 – Current</p>
-                <ul>
-                    <li>Guided a dynamic team of 27+ L1 and L1.5 support experts...</li>
-                </ul>
-            </div>
-        </section>
-        <section id="skills" class="section">
-            <h2>Skills</h2>
-            <div class="skills-list">
-                <span class="skill-item">Creativity</span>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 90%;"></div>
-                </div>
-                <span class="skill-item">Organizational skills</span>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 85%;"></div>
-                </div>
-            </div>
-        </section>
-        <section id="attributes" class="section">
-            <h2>Attributes</h2>
-            <div class="attributes-list">
-                <span class="attribute-item">Highly motivated</span>
-                <span class="attribute-item">Career Driven</span>
-            </div>
-        </section>
+  <header class="header">
+    <div class="header-content">
+      <img src="your-photo.jpg" alt="Michael Fahim" class="profile-pic">
+      <h1 class="typewriter">Michael Fahim</h1>
+      <p>Major Incident Manager / Escalation Incident Manager</p>
     </div>
-    <script>
-        gsap.registerPlugin(ScrollTrigger);
+  </header>
 
-        gsap.utils.toArray(".section").forEach(section => {
-            gsap.fromTo(section, {
-                opacity: 0,
-                y: 50
-            }, {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                scrollTrigger: {
-                    trigger: section,
-                    start: "top 80%",
-                    end: "bottom 20%",
-                    toggleActions: "play none none reverse"
-                }
-            });
-        });
+  <section class="about">
+    <h2>Professional Profile</h2>
+    <p class="animated-profile">
+      Diligent and results-driven Incident Manager with over 7 years of experience...
+    </p>
+  </section>
 
-        gsap.from("header", {
-            opacity: 0,
-            y: -50,
-            duration: 1,
-            ease: "power2.out"
-        });
+  <section class="experience">
+    <h2>Work Experience</h2>
+    <div class="experience-cards">
+      <div class="card">
+        <h3>Major Incident Manager - Yahoo Inc (June 2023 - June 2024)</h3>
+        <p>Leading cross-functional teams in resolving major incidents...</p>
+      </div>
+      <div class="card">
+        <h3>Service Desk Lead - HCL America Inc (Nov 2018 - Present)</h3>
+        <p>Guiding a dynamic team of 27+ L1 and L1.5 support experts...</p>
+      </div>
+    </div>
+  </section>
 
-        gsap.from(".profile-image", {
-            scale: 0,
-            opacity: 0,
-            duration: 1,
-            delay: 0.5,
-            ease: "back.out(1.7)"
-        });
+  <section class="education">
+    <h2>Education</h2>
+    <ul class="education-list">
+      <li>University of The People - Bachelor’s Degree in Computer Science (Aug 2023)</li>
+      <li>Wake Tech - Associate Degree in Computer Engineering (July 2018)</li>
+    </ul>
+  </section>
 
-        gsap.from(".skill-item, .attribute-item", {
-            scale: 0,
-            opacity: 0,
-            duration: 0.5,
-            stagger: 0.1,
-            ease: "back.out(1.7)",
-            scrollTrigger: {
-                trigger: "#skills",
-                start: "top 80%",
-                end: "bottom 20%",
-                toggleActions: "play none none reverse"
-            }
-        });
+  <section class="skills">
+    <h2>Skills</h2>
+    <div class="skills-bars">
+      <div class="skill">
+        <p>Creativity</p>
+        <div class="bar" style="width: 90%;"></div>
+      </div>
+      <div class="skill">
+        <p>Organizational Skills</p>
+        <div class="bar" style="width: 85%;"></div>
+      </div>
+    </div>
+  </section>
 
-        // Animate skill progress bars
-        gsap.to(".progress-fill", {
-            width: "100%",
-            duration: 2,
-            ease: "power2.inOut",
-            scrollTrigger: {
-                trigger: "#skills",
-                start: "top 80%",
-                end: "bottom 20%",
-                toggleActions: "play none none reverse"
-            }
-        });
-    </script>
+  <footer>
+    <p>Connect with me on <a href="https://www.linkedin.com/in/michael-fahim-b76258186/" target="_blank">LinkedIn</a></p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
