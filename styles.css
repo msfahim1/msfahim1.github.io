@@ -38,7 +38,7 @@ body {
   50% { border-color: orange; }
 }
 
-.about, .experience, .education, .skills {
+.about, .experience, .education, .skills, .references {
   padding: 20px;
   margin: 20px;
   background-color: white;
@@ -52,6 +52,7 @@ h2 {
 
 .experience-cards {
   display: flex;
+  flex-direction: column;
   gap: 20px;
 }
 
